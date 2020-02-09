@@ -11,5 +11,43 @@ export class PlacestudentComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  studentInfo: any[] = [
+    {
+      imgUrl:"sachin.jpg",
+      name: "Sachin Machale",
+      companyName: "NCPL Pvt.Ltd",
+    },
+    {
+      imgUrl:"rani.jpg",
+      name: "Rani Patil",
+      companyName: "Pixel6 Web Studio",
+    },
+    {
+      imgUrl:"mukesh.jpg",
+      name: "Mukesh Dama",
+      companyName: "NCPL Pvt. Ltd",
+    },
+    {
+      imgUrl:"akshay.jpg",
+      name: "Akshay Gathe",
+      companyName: "Pixel6 Web Studio Pvt. Ltd",
+    },
+    
+    {
+      imgUrl:"suraj.jpg",
+      name: "Suraj Ovhal",
+      companyName: "Proser Digital Solution",
+    },
+   
+    {
+      imgUrl:"rohini.jpg",
+      name: "Rohini Nimbane",
+      companyName: "Salgem Infoigy Ptv.Ltd",
+    },
+     {
+      imgUrl:"tejaswini.jpg",
+      name: "Tejaswini Uddan",
+      companyName: "Orange Bits India Software Ptd. Ltd",
+    }
+  ]
 }
