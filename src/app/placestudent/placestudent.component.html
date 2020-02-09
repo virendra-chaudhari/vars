@@ -13,71 +13,20 @@
 <section class="">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-lg-4">
-                <div class="card text-center">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
+            <div class="col-sm-12 col-lg-4 mb-2 "  *ngFor="let student of studentInfo">
+                <div class="card text-center studentCard">
+                    <div class="studentImg">
+                        <img class="card-img-top" src="assets/img/{{student.imgUrl}}" alt="Card image cap">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">John Smith</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
+                        <h5 class="card-title">{{student.name}}</h5>
+                        <p class="card-text">{{student.companyName}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4">
-                <div class="card">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4">
-                <div class="card">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4 mt-4">
-                <div class="card">
-                    <img class="card-img-top" src="assets/img/team4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+
+
+
         </div>
     </div>
 </section>
