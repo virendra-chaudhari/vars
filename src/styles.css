@@ -1,1 +1,117 @@
 /* You can add global styles to this file, and also import other style files */
+ .navbar {
+    margin-bottom: 0;
+}
+
+.navbar-default {
+    border: none;
+}
+
+.navbar-brand {
+    color: #222;
+	text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1em;
+	letter-spacing: -1px;
+    margin-top: 9px;
+    padding: 0 0 0 15px;
+}
+.navbar-default .navbar-brand{
+color: #D81265;
+background: rgb(245, 138, 46);
+height: 114px;
+position: absolute;
+top: -28px;
+bottom: -40px;
+z-index: 99999999;
+padding: 30px 15px;
+}
+
+ .navbar-collapse  ul.navbar-nav {
+    float: right;
+    margin-right: 0;
+}
+ .navbar {
+min-height: 70px;
+padding: 18px 0;
+background: #fff;
+}
+.home-page  .navbar-default{
+    background: rgba(255, 255, 255, 1);	
+    /* position: absolute; */
+    width: 100%;
+    position: relative;
+}
+
+ .nav li a:hover,
+ .nav li a:focus,
+ .nav li.active a,
+ .nav li.active a:hover,
+ .nav li a.dropdown-toggle:hover,
+ .nav li a.dropdown-toggle:focus,
+ .nav li.active ul.dropdown-menu li a:hover,
+ .nav li.active ul.dropdown-menu li.active a{
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+
+ .navbar-default .navbar-nav > .open > a,
+ .navbar-default .navbar-nav > .open > a:hover,
+ .navbar-default .navbar-nav > .open > a:focus {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+
+ .navbar {
+    min-height: 70px; 
+	
+    padding: 10px 0;
+}
+
+ .navbar-nav > li  {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+  .navbar-nav > li > a {
+    padding-bottom: 6px;
+    padding-top: 5px;
+    margin-left: 2px;
+    line-height: 30px;
+	font-weight: 700;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+
+.dropdown-menu li a:hover {
+    color: #fff !important;
+}
+
+ .nav .caret {
+    border-bottom-color: #f5f5f5;
+    border-top-color: #f5f5f5;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #fff;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color:  #fff;
+}	
+	
