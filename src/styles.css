@@ -19,10 +19,11 @@ header .navbar-nav > li a{
     color: #F58220;
 }
 .card-body{
-    min-height: 190px;
+    min-height: 240px;
 }
 .heading-section{
     background-color: #4f0761;
     padding: 30px 0;
+    margin-bottom: 30px;
     color: #fff;
 }
