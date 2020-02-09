@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 
 export class FooterComponent {
 
-  constructor(public cache: Cache,private router: Router) {
+  constructor(private router: Router) {
       
   }
   ngOnDestroy() {
