@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/slick.theme.css",
+              "src/assets/css/slick.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/slick.min"
+            ]
           },
           "configurations": {
             "production": {
