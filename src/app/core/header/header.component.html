@@ -1,28 +1,28 @@
 
 <header>
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light clearfix">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light clearfix" [class.nav-fixed]="isNavBarFixed">
 
-			<a class="navbar-brand logo"><img src="assets/img/logo.png" alt="logo" /></a>
+			<a class="navbar-brand logo"><img src="assets/img/logo1.png" alt="logo" height="70" width="140" /></a>
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  	</button>
 			<div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
 			    <ul class="navbar-nav">
 			    	<li>
-			    		<a class="nav-link" routerLink="/home">Home</a>
+			    		<a class="nav-link" routerLink="/home" [class.color-white]="isNavBarFixed">Home</a>
 			    	</li>
 					<li>
-						<a class="nav-link" routerLink="/about">About Us</a>
+						<a class="nav-link" routerLink="/about" [class.color-white]="isNavBarFixed">About Us</a>
 					</li>
 					<li>
-						<a class="nav-link" routerLink="/cources">Cources</a>
+						<a class="nav-link" routerLink="/cources" [class.color-white]="isNavBarFixed">Cources</a>
 					</li>
 					<li>
-						<a class="nav-link" routerLink="/contact">Contact</a>
+						<a class="nav-link" routerLink="/placement" [class.color-white]="isNavBarFixed">Placestudent</a>
 					</li>
 					<li>
-						<a class="nav-link" routerLink="/placement">Placestudent</a>
+						<a class="nav-link" routerLink="/contact" [class.color-white]="isNavBarFixed">Contact</a>
 					</li>
 
 			    </ul>

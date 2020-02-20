@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PlacestudentComponent } from './placestudent/placestudent.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { WebDtailsComponent } from './web-dtails/web-dtails.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './core/footer/footer.component';
     ContactComponent,
     PlacestudentComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    WebDtailsComponent
   ],
   imports: [
     BrowserModule,

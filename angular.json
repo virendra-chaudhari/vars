@@ -23,12 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/slick.theme.css",
-              "src/assets/css/slick.css",
+              // "src/assets/css/slick.theme.css",
+              // "src/assets/css/slick.css",
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/slick.min"
+             // "src/assets/js/slick.min"
             ]
           },
           "configurations": {

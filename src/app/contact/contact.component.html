@@ -3,12 +3,27 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <h1 class="">Contact works!</h1>
+                    <h1 class="">Contact</h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 alignment">
+            <h2>VARS Technosoft</h2>
+            <h4>varstechnosoft@gmail.com</h4>
+            <h5>9881697122/9960296928</h5>
+        </div>
+        <div class="col-sm-12 icon-display"><img src="assets/img/network.jpg" alt="" width="100%" height="auto">
+            <div class="display" (click)="onSelect(website.url)" *ngFor="let website of websites">
+                <img src="assets/img/{{website.imgPath}}" alt="icon" width="40px" height="40px" >
+            </div>
+            
+       
+        </div>
+      
 
-
-<p>contact works!</p>
+    </div>
+</div>

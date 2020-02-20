@@ -42,7 +42,7 @@ export class PlacestudentComponent implements OnInit {
     {
       imgUrl:"rohini.jpg",
       name: "Rohini Nimbane",
-      companyName: "Salgem Info",
+      companyName: "Salgem Info Ptd. Ltd.",
     },
      {
       imgUrl:"tejaswini.jpg",
