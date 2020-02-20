@@ -63,13 +63,19 @@ header .navbar-nav > li a{
     max-width: 100%;
 }
 .card{
-    box-shadow: 0px 1px 6px 3px rgb(0,0,0,0.1);
-    padding: 10px 15px;
-    border-radius: 5px;
-  height: 350px;
+  box-shadow: 0px 1px 6px 3px rgb(0,0,0,0.1);
+  padding: 10px 15px;
+  border-radius: 5px;
+height: 350px;
+}
+.cardStud{
+  box-shadow: 0px 1px 6px 3px rgb(0,0,0,0.1);
+  padding: 10px 15px;
+  border-radius: 5px;
+height: 500px;
 }
 .studentImg{
-    height: 350px;
+    height: 400px;
     overflow: hidden;
 }
 .studentCard:hover{

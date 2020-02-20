@@ -13,7 +13,7 @@ export class PlacestudentComponent implements OnInit {
   }
   studentInfo: any[] = [
     {
-      imgUrl:"sachin.jpg",
+      imgUrl:"sachin1.jpg",
       name: "Sachin Machale",
       companyName: "NCPL Pvt.Ltd",
     },
@@ -34,7 +34,7 @@ export class PlacestudentComponent implements OnInit {
     },
     
     {
-      imgUrl:"suraj.jpg",
+      imgUrl:"suraj1.jpg",
       name: "Suraj Ovhal",
       companyName: "Proser Digital Solution",
     },
