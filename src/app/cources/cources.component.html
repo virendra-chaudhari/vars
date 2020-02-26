@@ -11,141 +11,57 @@
     </div>
 </section>
 <section>
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="card service-box">
-                    <div class="card-body">
-                        <h4 class="media-heading text-center  bg-secondary box-label">Angular 8</h4>
-                        <p class="">AngularJS is a javascript-based open-source front-end web framework mainly
-                            maintained by Google and by a community of individuals and corporations to address many of
-                            the challenges encountered in developing single page application. </p>
+            <div class="col-md-4" *ngFor="let course of courseDetails ; let i = index" [attr.courseDetails-index]="i">
+                <div class="card service-box mb-3">
+                    <div class="card-body ">
+                        <h4 class="media-heading text-center  bg-secondary box-label">{{course.courseName}}</h4>
+                        <div class="">{{course.details}} </div>
                         <div class="container">
                             <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                            <button type="button" class="btn btn-primary cardButton" data-toggle="modal"
+                                [attr.data-target]="'#myModal'+ course.id">
                                 Details
                             </button>
 
                             <!-- The Modal -->
-                            <div class="modal" id="myModal1">
+                            <div class="modal" [attr.id]="'myModal'+course.id">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h1 class="modal-title">Angular 8</h1>
+                                            <h1 class="modal-title">{{course.courseName}}</h1>
                                             <button type="button" class="close" data-dismiss="modal">×</button>
                                         </div>
 
                                         <!-- Modal body -->
                                         <div class="modal-body">
-                                            <h3>Some text to enable scrolling..</h3>
+                                            <ul id="myUL">
+                                                <li><span class="caret">Beverages</span>
+                                                    <ul class="nested">
+                                                        <li>Water</li>
+                                                        <li>Coffee</li>
+                                                        <li><span class="caret">Tea</span>
+                                                            <ul class="nested">
+                                                                <li>Black Tea</li>
+                                                                <li>White Tea</li>
+                                                                <li><span class="caret">Green Tea</span>
+                                                                    <ul class="nested">
+                                                                        <li>Sencha</li>
+                                                                        <li>Gyokuro</li>
+                                                                        <li>Matcha</li>
+                                                                        <li>Pi Lo Chun</li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
 
-                                            <p>Duis aute irure dolor
-                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                qui officia deserunt mollit anim id est laborum consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                                ut aliquip ex ea commodo consequat.</p>
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="card service-box">
-                    <div class="card-body">
-                        <h4 class="media-heading text-center  box-label bg-secondary">React js</h4>
-                        <p class="">ReactJS is javaScript library for building user interface. It is maintained by
-                            Facebook and a community of individual developers and companies.</p>
-
-                        <div class="container mt-3">
-                            <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                                Details
-                            </button>
-
-                            <!-- The Modal -->
-                            <div class="modal fade" id="myModal2">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">React JS</h4>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            Modal body..
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="card service-box">
-                    <div class="card-body">
-                        <h4 class="media-heading text-center  bg-secondary box-label">Node js</h4>
-                        <p class="">Node.js allow the creating of web servers and networking tools using Javascript and
-                            a collection of "modules that handles various core functionalities."</p>
-                        <div class="container">
-                            <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
-                                Details
-                            </button>
-
-                            <!-- The Modal -->
-                            <div class="modal" id="myModal3">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h1 class="modal-title">Node JS</h1>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <h3>Some text to enable scrolling..</h3>
-
-                                            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                qui officia deserunt mollit anim id est laborum consectetur adipiscing
-                                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                                ut aliquip ex ea commodo consequat.</p>
+                                            <p>{{course.syllabus}}</p>
                                         </div>
 
                                         <!-- Modal footer -->
@@ -174,10 +90,11 @@
                         <div class="container">
                             <!-- Button to Open the Modal -->
                             <div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#myModal4">
                                     Details
                                 </button>
-    
+
                             </div>
                             <!-- The Modal -->
                             <div class="modal" id="myModal4">
@@ -226,65 +143,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6">
-                <div class="card service-box ">
-                    <div class="card-body">
-                        <h4 class="media-heading text-center bg-secondary box-label">HTML 5</h4>
-                        <p class=" ">Hyper Text Markup Language (HTML) is a markup language for creating a webpage.
-                            HTML5 is a software solution stack that define the properties and behaviors of web page
-                            content by implementing a markup based pattern to it.</p>
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalLong">
-                            Details
-                        </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">HTML5</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <ul id="myUL">
-                                            <li><span class="caret">Beverages</span>
-                                                <ul class="nested">
-                                                    <li>Water</li>
-                                                    <li>Coffee</li>
-                                                    <li><span class="caret">Tea</span>
-                                                        <ul class="nested">
-                                                            <li>Black Tea</li>
-                                                            <li>White Tea</li>
-                                                            <li><span class="caret">Green Tea</span>
-                                                                <ul class="nested">
-                                                                    <li>Sencha</li>
-                                                                    <li>Gyokuro</li>
-                                                                    <li>Matcha</li>
-                                                                    <li>Pi Lo Chun</li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-md-4 col-sm-6">
                 <div class="card service-box">
@@ -295,12 +154,12 @@
                             technology of the World Wide Web, alongside HTML and Javascript.</p>
                         <div class="container">
                             <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal6">
-                            Details
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Details
                             </button>
 
                             <!-- The Modal -->
-                            <div class="modal" id="myModal6">
+                            <div class="modal" id="myModal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -356,53 +215,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6 mt-4">
-                <div class="card service-box">
-                    <div class="card-body">
-                        <h4 class="media-heading text-center bg-secondary box-label">Bootstrap</h4>
-                        <p class="">Bootstrap is a free and open-source front-end web framework for designing websites
-                            and web applications. It contains HTML- and CSS-based design templates for typography,
-                            forms, buttons, navigation and other interface components, as well as optional JavaScript
-                            extensions.</p>
-                        <div class="container mt-3">
-                            <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal7">
-                                Details
-                            </button>
 
-                            <!-- The Modal -->
-                            <div class="modal fade" id="myModal7">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Bootstrap</h4>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <li>Bootstrap Setup</li>
-                                            <li> Benifits of Bootstrap</li>
-                                            <li>Basics of Bootstrap</li>
-                                            <li> Project Design Using Bootstrap</li>
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
