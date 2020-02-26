@@ -11,7 +11,9 @@ import { PlacestudentComponent } from './placestudent/placestudent.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { WebDtailsComponent } from './web-dtails/web-dtails.component';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { CoreModule } from './core/core.module'
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,13 +22,15 @@ import { WebDtailsComponent } from './web-dtails/web-dtails.component';
     CourcesComponent,
     ContactComponent,
     PlacestudentComponent,
-    HeaderComponent,
-    FooterComponent,
+    /*   HeaderComponent,
+      FooterComponent, */
     WebDtailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
