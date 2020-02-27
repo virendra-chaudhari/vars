@@ -13,7 +13,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { WebDtailsComponent } from './web-dtails/web-dtails.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { CoreModule } from './core/core.module'
+import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
