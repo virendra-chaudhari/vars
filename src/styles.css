@@ -18,6 +18,7 @@
 }
 header .navbar-nav > li {
     padding: 12px;
+    cursor: pointer;
 }
 .navbar-expand-lg .navbar-collapse {
     align-items: flex-end;
@@ -192,33 +193,12 @@ ul, #myUL {
     border-radius: 5px;
   }
   
-.carousel-item{
-    margin-top: 66px;
-}
+
 .feedBack{
   border-radius: 5px;
-  padding: 30px ;
   box-shadow: 0 3px 9px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
-background: purple;}
+  background: purple;}
 
-
-
-.borderImg{
-  margin-left: 135px;
-  width: 200px;
-  text-align: right;
-  margin-bottom: 20px;
-  margin-top: -32px;
-}
-
-.carousel-text{
-  text-align: left;
-  margin-left:280px;
-  
-}
-.borderImg{
-border-radius: 100%;
-}
 .effect2
 {
   position: relative;
