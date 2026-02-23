@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-web-dtails',
   templateUrl: './web-dtails.component.html',
-  styleUrls: ['./web-dtails.component.css']
+  styleUrls: ['./web-dtails.component.css'],
+  standalone: false
 })
 export class WebDtailsComponent implements OnInit {
 
