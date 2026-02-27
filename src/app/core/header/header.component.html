@@ -1,32 +1,89 @@
-<header>
-	<div class="container">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-light clearfix" [class.nav-fixed]="isNavBarFixed">
+<!-- Modern Navigation Header -->
+<header class="navbar-modern" [class.scrolled]="isNavBarFixed">
+  <div class="container-app">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      
+      <!-- Logo -->
+      <a routerLink="/home" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-secondary-600 
+                    flex items-center justify-center shadow-lg shadow-primary-500/25
+                    group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+          <span class="text-white font-bold text-lg">V</span>
+        </div>
+        <span class="hidden sm:block font-display font-bold text-xl text-surface-900">
+          VARS<span class="text-primary-600">.</span>
+        </span>
+      </a>
 
-			<a class="navbar-brand logo"><img src="assets/img/logo1.png" alt="logo" height="70" width="140" /></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a  routerLink="/home"  [ngClass]="{'color-white': isNavBarFixed, 'color-gray': !isNavBarFixed}"  [class.color-white]="isNavBarFixed">Home</a>
-					</li>
-					<li class="nav-item">
-						<a [ngClass]="{'color-white': isNavBarFixed, 'color-gray': !isNavBarFixed}" routerLink="/about" [class.color-white]="isNavBarFixed">About Us</a>
-					</li>
-					<li class="nav-item">
-						<a [ngClass]="{'color-white': isNavBarFixed, 'color-gray': !isNavBarFixed}" routerLink="/cources" [class.color-white]="isNavBarFixed">Cources</a>
-					</li>
-					<li class="nav-item">
-						<a [ngClass]="{'color-white': isNavBarFixed, 'color-gray': !isNavBarFixed}" routerLink="/placement" [class.color-white]="isNavBarFixed">Placestudent</a>
-					</li>
-					<li class="nav-item">
-						<a [ngClass]="{'color-white': isNavBarFixed, 'color-gray': !isNavBarFixed}"  routerLink="/contact" [class.color-white]="isNavBarFixed">Contact</a>
-					</li>
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link-modern">Home</a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link-modern">About Us</a>
+        <a routerLink="/cources" routerLinkActive="active" class="nav-link-modern">Courses</a>
+        <a routerLink="/placement" routerLinkActive="active" class="nav-link-modern">Placements</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link-modern">Contact</a>
+      </div>
 
-				</ul>
-			</div>
-		</nav>
-	</div>
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <a routerLink="/contact" class="btn-primary btn-sm">
+          Get Started
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors"
+        (click)="isMobileMenuOpen = !isMobileMenuOpen"
+        aria-label="Toggle menu"
+      >
+        <svg *ngIf="!isMobileMenuOpen" class="w-6 h-6 text-surface-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg *ngIf="isMobileMenuOpen" class="w-6 h-6 text-surface-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div 
+      class="md:hidden overflow-hidden transition-all duration-300"
+      [class.max-h-0]="!isMobileMenuOpen"
+      [class.max-h-96]="isMobileMenuOpen"
+      [class.opacity-0]="!isMobileMenuOpen"
+      [class.opacity-100]="isMobileMenuOpen"
+    >
+      <div class="py-4 space-y-1 border-t border-surface-100">
+        <a routerLink="/home" routerLinkActive="active" (click)="isMobileMenuOpen = false"
+           class="block px-4 py-3 rounded-xl text-surface-600 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+          Home
+        </a>
+        <a routerLink="/about" routerLinkActive="active" (click)="isMobileMenuOpen = false"
+           class="block px-4 py-3 rounded-xl text-surface-600 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+          About Us
+        </a>
+        <a routerLink="/cources" routerLinkActive="active" (click)="isMobileMenuOpen = false"
+           class="block px-4 py-3 rounded-xl text-surface-600 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+          Courses
+        </a>
+        <a routerLink="/placement" routerLinkActive="active" (click)="isMobileMenuOpen = false"
+           class="block px-4 py-3 rounded-xl text-surface-600 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+          Placements
+        </a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="isMobileMenuOpen = false"
+           class="block px-4 py-3 rounded-xl text-surface-600 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+          Contact
+        </a>
+        <div class="pt-4 px-4">
+          <a routerLink="/contact" class="btn-primary w-full justify-center">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

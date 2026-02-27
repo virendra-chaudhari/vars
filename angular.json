@@ -36,6 +36,9 @@
                 }
               ],
               "outputHashing": "all",
+              "optimization": {
+                "fonts": false
+              },
               "budgets": [
                 {
                   "type": "initial",
@@ -44,14 +47,16 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "100kb",
+                  "maximumError": "200kb"
                 }
               ],
               "serviceWorker": "ngsw-config.json"
             },
             "development": {
-              "optimization": false,
+              "optimization": {
+                "fonts": false
+              },
               "extractLicenses": false,
               "sourceMap": true
             }

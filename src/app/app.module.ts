@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { CourcesComponent } from './cources/cources.component';
+// CourcesComponent is now standalone - imported directly in routing
 import { ContactComponent } from './contact/contact.component';
 import { PlacestudentComponent } from './placestudent/placestudent.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -19,7 +19,7 @@ import { CoreModule } from './core/core.module';
     AppComponent,
     HomeComponent,
     AboutComponent,
-    CourcesComponent,
+    // CourcesComponent - now standalone
     ContactComponent,
     PlacestudentComponent,
     /*   HeaderComponent,

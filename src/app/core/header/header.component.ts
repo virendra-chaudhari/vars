@@ -9,13 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent {
     isNavBarFixed = false;
+    isMobileMenuOpen = false;
     
     constructor(private activatedRoute: ActivatedRoute) {
 
     }
     @HostListener("window:scroll", [])
     onWindowScroll() {
-        window.pageYOffset < 85 ? this.isNavBarFixed = false : this.isNavBarFixed = true
+        window.pageYOffset < 85 ? this.isNavBarFixed = false : this.isNavBarFixed = true;
+        // Close mobile menu on scroll
+        if (this.isMobileMenuOpen) {
+            this.isMobileMenuOpen = false;
+        }
     }
     ngOnInit() {
 
