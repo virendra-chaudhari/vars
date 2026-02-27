@@ -1,0 +1,241 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// FOOTER COMPONENT STYLES
+// Modern, professional footer design
+// ═══════════════════════════════════════════════════════════════════════════
+
+.footer {
+  background: linear-gradient(180deg, #1c1917 0%, #0f0e0d 100%);
+  color: #a8a29e;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @media (min-width: 640px) {
+      padding: 0 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 0 2rem;
+    }
+  }
+
+  // Main Footer Section
+  &__main {
+    padding: 4rem 0;
+
+    @media (min-width: 768px) {
+      padding: 5rem 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+    }
+  }
+
+  // Brand Section
+  &__brand {
+    @media (min-width: 640px) {
+      grid-column: span 2;
+    }
+
+    @media (min-width: 1024px) {
+      grid-column: span 1;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+
+    &:hover .footer__logo-icon {
+      transform: scale(1.05);
+    }
+  }
+
+  &__logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+
+    span {
+      color: white;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+  }
+
+  &__logo-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  &__logo-dot {
+    color: #2563eb;
+  }
+
+  &__description {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #78716c;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+  }
+
+  // Social Links
+  &__social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a8a29e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    &:hover {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Links Sections
+  &__links-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  &__links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__link {
+    color: #78716c;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #3b82f6;
+    }
+  }
+
+  // Contact Section
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: #78716c;
+  }
+
+  &__contact-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #3b82f6;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  // Footer Bottom
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+  }
+
+  &__bottom-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__copyright {
+    font-size: 0.875rem;
+    color: #57534e;
+    margin: 0;
+  }
+
+  &__tagline {
+    font-size: 0.875rem;
+    color: #57534e;
+    margin: 0;
+  }
+
+  &__heart {
+    color: #ef4444;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

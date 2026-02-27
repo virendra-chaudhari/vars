@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
-import { PlacestudentComponent } from './placestudent/placestudent.component';
 import { WebDtailsComponent } from './web-dtails/web-dtails.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'contact', component: ContactComponent },
+  // Lazy load standalone components for better performance
+  { 
+    path: 'about', 
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+  },
+  { 
+    path: 'contact', 
+    loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)
+  },
   { path: 'web/:id', component: WebDtailsComponent },
-  // Lazy load standalone component for better performance
   { 
     path: 'cources', 
     loadComponent: () => import('./cources/cources.component').then(m => m.CourcesComponent)
   },
-  { path: 'placement', component: PlacestudentComponent },
+  { 
+    path: 'placement', 
+    loadComponent: () => import('./placestudent/placestudent.component').then(m => m.PlacestudentComponent)
+  },
 ];
 
 @NgModule({

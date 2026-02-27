@@ -1,32 +1,129 @@
-<section class="courses-section heading-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center">
-                    <h1 class="">Placement</h1>
-                </div>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     PLACEMENTS PAGE - Modern, Professional Design
+     ═══════════════════════════════════════════════════════════════════════════ -->
 
-            </div>
-        </div>
-    </div>
+<!-- Hero Section -->
+<section class="placement-hero">
+  <div class="placement-hero__pattern"></div>
+  
+  <div class="placement-hero__container">
+    <span class="placement-hero__badge">🎯 Career Success</span>
+    <h1 class="placement-hero__title">
+      Our <span class="placement-hero__highlight">Success Stories</span>
+    </h1>
+    <p class="placement-hero__subtitle">
+      Meet our talented graduates who are now working at top companies across the industry. 
+      Your success story could be next!
+    </p>
+  </div>
+  
+  <div class="placement-hero__wave">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#fafaf9"/>
+    </svg>
+  </div>
 </section>
-<section class="">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-4 mb-2 "  *ngFor="let student of studentInfo">
-                <div class="cardStud text-center studentCard">
-                    <div class="studentImg">
-                        <img class="card-img-top" src="assets/img/{{student.imgUrl}}" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{student.name}}</h5>
-                        <p class="card-text">{{student.companyName}}</p>
-                    </div>
-                </div>
-            </div>
 
-
-
+<!-- Stats Section -->
+<section class="placement-stats">
+  <div class="placement-stats__container">
+    <div class="placement-stats__grid">
+      @for (stat of stats; track stat.label) {
+        <div class="placement-stats__item">
+          <span class="placement-stats__value">{{ stat.value }}</span>
+          <span class="placement-stats__label">{{ stat.label }}</span>
         </div>
+      }
     </div>
+  </div>
+</section>
+
+<!-- Placed Students Section -->
+<section class="placement-students">
+  <div class="placement-students__container">
+    <div class="placement-students__header">
+      <span class="placement-students__badge">Our Alumni</span>
+      <h2 class="placement-students__title">Placed Students</h2>
+      <p class="placement-students__subtitle">
+        These talented individuals started their journey at VARS and are now making their mark in the industry.
+      </p>
+    </div>
+    
+    <div class="placement-students__grid">
+      @for (student of students; track student.name; let i = $index) {
+        <article class="placement-card" [style.animation-delay.ms]="i * 100">
+          <div class="placement-card__image-wrapper">
+            <img [src]="student.image" [alt]="student.name" class="placement-card__image">
+            <div class="placement-card__badge">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Placed
+            </div>
+          </div>
+          
+          <div class="placement-card__content">
+            <h3 class="placement-card__name">{{ student.name }}</h3>
+            @if (student.role) {
+              <span class="placement-card__role">{{ student.role }}</span>
+            }
+            <div class="placement-card__company">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+              {{ student.company }}
+            </div>
+            @if (student.testimonial) {
+              <p class="placement-card__testimonial">"{{ student.testimonial }}"</p>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Hiring Partners Section -->
+<section class="placement-partners">
+  <div class="placement-partners__container">
+    <div class="placement-partners__header">
+      <span class="placement-partners__badge">Our Partners</span>
+      <h2 class="placement-partners__title">Hiring Partners</h2>
+      <p class="placement-partners__subtitle">
+        We have strong partnerships with leading companies who actively recruit our graduates.
+      </p>
+    </div>
+    
+    <div class="placement-partners__grid">
+      @for (company of partnerCompanies; track company) {
+        <div class="placement-partners__card">
+          <span class="placement-partners__name">{{ company }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="placement-cta">
+  <div class="placement-cta__container">
+    <div class="placement-cta__content">
+      <h2 class="placement-cta__title">Ready to Launch Your Career?</h2>
+      <p class="placement-cta__text">
+        Join our training program and become part of our success stories. 
+        Your dream job is waiting for you!
+      </p>
+      <div class="placement-cta__buttons">
+        <a routerLink="/cources" class="placement-cta__btn placement-cta__btn--primary">
+          Enroll Now
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a routerLink="/contact" class="placement-cta__btn placement-cta__btn--secondary">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
 </section>

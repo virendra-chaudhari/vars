@@ -1,222 +1,207 @@
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     MODERN HOME PAGE - Elegant UI with Tailwind CSS
-     ═══════════════════════════════════════════════════════════════════════════ -->
+﻿<!-- 
+     HOME PAGE - Clean, Accessible Design with Proper Contrast
+     WCAG AA Compliant - Minimum 4.5:1 contrast for body, 3:1 for large text
+      -->
 
 <!-- Hero Section -->
-<section class="hero hero-gradient hero-mesh">
-  <!-- Animated Background Elements -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute top-1/2 -left-20 w-60 h-60 bg-accent-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
-    <div class="absolute -bottom-20 right-1/4 w-72 h-72 bg-secondary-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
-  </div>
+<section class="home-hero">
+  <!-- Subtle gradient background -->
+  <div class="home-hero__bg"></div>
   
-  <!-- Hero Content -->
-  <div class="container-app relative z-10 text-center py-20 md:py-32">
-    <div class="animate-in">
-      <span class="badge-glass mb-6">
-        🚀 Transform Your Career
-      </span>
-    </div>
-    
-    <h1 class="text-white text-5xl md:text-6xl lg:text-7xl mb-6 animate-in animate-delay-100 text-balance">
-      Master Modern<br>
-      <span class="text-gradient bg-gradient-to-r from-accent-400 via-accent-300 to-secondary-400 bg-clip-text text-transparent">
-        Web Development
-      </span>
-    </h1>
-    
-    <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-in animate-delay-200 text-balance">
-      Join thousands of successful developers. Learn industry-ready skills with hands-on projects and expert mentorship.
-    </p>
-    
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in animate-delay-300">
-      <a routerLink="/cources" class="btn-accent btn-lg">
-        Explore Courses
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+  <!-- Content Card with solid background for readability -->
+  <div class="home-hero__container">
+    <div class="home-hero__content">
+      <span class="home-hero__badge">
+        <svg class="home-hero__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
         </svg>
-      </a>
-      <a routerLink="/about" class="btn btn-lg bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
-        Learn More
-      </a>
-    </div>
-    
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-white/10 animate-in animate-delay-400">
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1">500+</div>
-        <div class="text-white/60 text-sm">Students Placed</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1">50+</div>
-        <div class="text-white/60 text-sm">Partner Companies</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1">10+</div>
-        <div class="text-white/60 text-sm">Expert Mentors</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1">95%</div>
-        <div class="text-white/60 text-sm">Success Rate</div>
+        Transform Your Career
+      </span>
+      
+      <h1 class="home-hero__title">
+        Master Modern
+        <span class="home-hero__highlight">Web Development</span>
+      </h1>
+      
+      <p class="home-hero__subtitle">
+        Join thousands of successful developers. Learn industry-ready skills 
+        with hands-on projects and expert mentorship.
+      </p>
+      
+      <div class="home-hero__actions">
+        <a routerLink="/cources" class="home-hero__btn home-hero__btn--primary">
+          Explore Courses
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a routerLink="/about" class="home-hero__btn home-hero__btn--secondary">
+          Learn More
+        </a>
       </div>
     </div>
   </div>
-  
-  <!-- Wave Divider -->
-  <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
-      <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--color-surface-50)"/>
-    </svg>
+</section>
+
+<!-- Stats Section - Separate from hero for clarity -->
+<section class="home-stats">
+  <div class="home-stats__container">
+    <div class="home-stats__grid">
+      <div class="home-stats__item">
+        <span class="home-stats__value">500+</span>
+        <span class="home-stats__label">Students Placed</span>
+      </div>
+      <div class="home-stats__item">
+        <span class="home-stats__value">50+</span>
+        <span class="home-stats__label">Partner Companies</span>
+      </div>
+      <div class="home-stats__item">
+        <span class="home-stats__value">10+</span>
+        <span class="home-stats__label">Expert Mentors</span>
+      </div>
+      <div class="home-stats__item">
+        <span class="home-stats__value">95%</span>
+        <span class="home-stats__label">Success Rate</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Why Choose Web Development Section -->
-<section class="section-spacing bg-surface-50">
-  <div class="container-app">
-    <div class="section-header">
-      <span class="overline">Why Choose Us</span>
-      <h2>Why Choose <span class="text-gradient">Web Development</span></h2>
-      <p>Discover why front-end development is one of the most rewarding career paths in tech today.</p>
-    </div>
+<section class="home-features">
+  <div class="home-features__container">
+    <header class="home-features__header">
+      <span class="home-features__badge">Why Choose Us</span>
+      <h2 class="home-features__title">
+        Why Choose <span class="home-features__highlight">Web Development</span>
+      </h2>
+      <p class="home-features__subtitle">
+        Discover why front-end development is one of the most rewarding career paths in tech today.
+      </p>
+    </header>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Feature Card 1 -->
-      <div class="card-feature" data-animate>
-        <div class="feature-icon mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+    <div class="home-features__grid">
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
           </svg>
         </div>
-        <h3 class="mb-3">High Demand</h3>
-        <p class="text-surface-500">Front-end developers are consistently ranked among the top 10 most in-demand tech jobs globally.</p>
-      </div>
+        <h3 class="feature-card__title">High Demand</h3>
+        <p class="feature-card__text">Front-end developers are consistently ranked among the top 10 most in-demand tech jobs globally.</p>
+      </article>
       
-      <!-- Feature Card 2 -->
-      <div class="card-feature" data-animate style="animation-delay: 100ms;">
-        <div class="feature-icon-secondary mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <h3 class="mb-3">Lucrative Salary</h3>
-        <p class="text-surface-500">Experienced front-end developers can earn competitive salaries ranging from ₹8L to ₹25L+ annually.</p>
-      </div>
+        <h3 class="feature-card__title">Lucrative Salary</h3>
+        <p class="feature-card__text">Experienced front-end developers can earn competitive salaries ranging from ₹8L to ₹25L+ annually.</p>
+      </article>
       
-      <!-- Feature Card 3 -->
-      <div class="card-feature" data-animate style="animation-delay: 200ms;">
-        <div class="feature-icon-accent mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <h3 class="mb-3">Work Anywhere</h3>
-        <p class="text-surface-500">Enjoy the flexibility of remote work. Build your career from anywhere in the world.</p>
-      </div>
+        <h3 class="feature-card__title">Work Anywhere</h3>
+        <p class="feature-card__text">Enjoy the flexibility of remote work. Build your career from anywhere in the world.</p>
+      </article>
       
-      <!-- Feature Card 4 -->
-      <div class="card-feature" data-animate style="animation-delay: 300ms;">
-        <div class="feature-icon mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
           </svg>
         </div>
-        <h3 class="mb-3">Creative Freedom</h3>
-        <p class="text-surface-500">Express your creativity through code. Design beautiful, user-friendly experiences.</p>
-      </div>
+        <h3 class="feature-card__title">Creative Freedom</h3>
+        <p class="feature-card__text">Express your creativity through code. Design beautiful, user-friendly experiences.</p>
+      </article>
       
-      <!-- Feature Card 5 -->
-      <div class="card-feature" data-animate style="animation-delay: 400ms;">
-        <div class="feature-icon-secondary mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
           </svg>
         </div>
-        <h3 class="mb-3">Career Options</h3>
-        <p class="text-surface-500">Work for startups, corporations, agencies, or freelance. The choice is yours.</p>
-      </div>
+        <h3 class="feature-card__title">Career Options</h3>
+        <p class="feature-card__text">Work for startups, corporations, agencies, or freelance. The choice is yours.</p>
+      </article>
       
-      <!-- Feature Card 6 -->
-      <div class="card-feature" data-animate style="animation-delay: 500ms;">
-        <div class="feature-icon-accent mb-5">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+      <article class="feature-card">
+        <div class="feature-card__icon feature-card__icon--accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
           </svg>
         </div>
-        <h3 class="mb-3">Always Evolving</h3>
-        <p class="text-surface-500">Stay at the cutting edge. Learn new technologies and never stop growing.</p>
-      </div>
+        <h3 class="feature-card__title">Always Evolving</h3>
+        <p class="feature-card__text">Stay at the cutting edge. Learn new technologies and never stop growing.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Mission Section with Gradient Background -->
-<section class="section-spacing bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-900 text-white relative overflow-hidden">
-  <!-- Background Pattern -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-  </div>
-  
-  <div class="container-app relative z-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <span class="badge-glass mb-6">Our Mission</span>
-        <h2 class="text-white text-4xl md:text-5xl mb-6">
-          Empowering the Next Generation of <span class="text-accent-400">Developers</span>
+<!-- Mission Section -->
+<section class="home-mission">
+  <div class="home-mission__container">
+    <div class="home-mission__grid">
+      <div class="home-mission__content">
+        <span class="home-mission__badge">Our Mission</span>
+        <h2 class="home-mission__title">
+          Empowering the Next Generation of 
+          <span class="home-mission__highlight">Developers</span>
         </h2>
-        <p class="text-white/70 text-lg mb-8 leading-relaxed">
-          We believe implementation is more important than just learning. Our mission is to deliver the best quality training with a focus on real-world projects and industry practices.
+        <p class="home-mission__text">
+          We believe implementation is more important than just learning. Our mission 
+          is to deliver the best quality training with a focus on real-world projects 
+          and industry practices.
         </p>
         
-        <div class="space-y-4">
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center flex-shrink-0 mt-1">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            <p class="text-white/80">Hands-on training with real-world projects</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center flex-shrink-0 mt-1">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            <p class="text-white/80">Industry-experienced mentors and experts</p>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center flex-shrink-0 mt-1">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            <p class="text-white/80">Career guidance and placement assistance</p>
-          </div>
-        </div>
+        <ul class="home-mission__list">
+          <li class="home-mission__list-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Hands-on training with real-world projects</span>
+          </li>
+          <li class="home-mission__list-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Industry-experienced mentors and experts</span>
+          </li>
+          <li class="home-mission__list-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Career guidance and placement assistance</span>
+          </li>
+        </ul>
       </div>
       
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-2 gap-6">
-        <div class="card-glass bg-white/10 text-center p-8">
-          <div class="text-4xl mb-2">🎯</div>
-          <div class="text-3xl font-bold text-white mb-2">100%</div>
-          <div class="text-white/60 text-sm">Practical Focus</div>
+      <div class="home-mission__cards">
+        <div class="mission-card">
+          <span class="mission-card__icon"></span>
+          <span class="mission-card__value">100%</span>
+          <span class="mission-card__label">Practical Focus</span>
         </div>
-        <div class="card-glass bg-white/10 text-center p-8">
-          <div class="text-4xl mb-2">👨‍🏫</div>
-          <div class="text-3xl font-bold text-white mb-2">Expert</div>
-          <div class="text-white/60 text-sm">Mentorship</div>
+        <div class="mission-card">
+          <span class="mission-card__icon"></span>
+          <span class="mission-card__value">Expert</span>
+          <span class="mission-card__label">Mentorship</span>
         </div>
-        <div class="card-glass bg-white/10 text-center p-8">
-          <div class="text-4xl mb-2">💼</div>
-          <div class="text-3xl font-bold text-white mb-2">Job</div>
-          <div class="text-white/60 text-sm">Ready Skills</div>
+        <div class="mission-card">
+          <span class="mission-card__icon"></span>
+          <span class="mission-card__value">Job</span>
+          <span class="mission-card__label">Ready Skills</span>
         </div>
-        <div class="card-glass bg-white/10 text-center p-8">
-          <div class="text-4xl mb-2">🌟</div>
-          <div class="text-3xl font-bold text-white mb-2">Lifetime</div>
-          <div class="text-white/60 text-sm">Support</div>
+        <div class="mission-card">
+          <span class="mission-card__icon"></span>
+          <span class="mission-card__value">Lifetime</span>
+          <span class="mission-card__label">Support</span>
         </div>
       </div>
     </div>
@@ -224,157 +209,155 @@
 </section>
 
 <!-- Who Should Learn Section -->
-<section class="section-spacing bg-white">
-  <div class="container-app">
-    <div class="section-header">
-      <span class="overline">For Everyone</span>
-      <h2>Who Should Learn <span class="text-gradient">This Course</span></h2>
-      <p>Our courses are designed for motivated individuals at any stage of their career journey.</p>
-    </div>
+<section class="home-audience">
+  <div class="home-audience__container">
+    <header class="home-audience__header">
+      <span class="home-audience__badge">For Everyone</span>
+      <h2 class="home-audience__title">
+        Who Should Learn <span class="home-audience__highlight">This Course</span>
+      </h2>
+      <p class="home-audience__subtitle">
+        Our courses are designed for motivated individuals at any stage of their career journey.
+      </p>
+    </header>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="card-interactive text-center group" data-animate>
-        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <span class="text-4xl">🎓</span>
+    <div class="home-audience__grid">
+      <article class="audience-card">
+        <div class="audience-card__icon audience-card__icon--blue">
+          <span></span>
         </div>
-        <h4 class="mb-2">Fresh Graduates</h4>
-        <p class="text-surface-500 text-sm">Kickstart your tech career with industry-ready skills</p>
-      </div>
+        <h3 class="audience-card__title">Fresh Graduates</h3>
+        <p class="audience-card__text">Kickstart your tech career with industry-ready skills</p>
+      </article>
       
-      <div class="card-interactive text-center group" data-animate style="animation-delay: 100ms;">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-secondary-100 to-secondary-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <span class="text-4xl">💼</span>
+      <article class="audience-card">
+        <div class="audience-card__icon audience-card__icon--purple">
+          <span></span>
         </div>
-        <h4 class="mb-2">Career Switchers</h4>
-        <p class="text-surface-500 text-sm">Transition smoothly into the world of web development</p>
-      </div>
+        <h3 class="audience-card__title">Career Switchers</h3>
+        <p class="audience-card__text">Transition smoothly into the world of web development</p>
+      </article>
       
-      <div class="card-interactive text-center group" data-animate style="animation-delay: 200ms;">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent-100 to-accent-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <span class="text-4xl">🚀</span>
+      <article class="audience-card">
+        <div class="audience-card__icon audience-card__icon--orange">
+          <span></span>
         </div>
-        <h4 class="mb-2">Entrepreneurs</h4>
-        <p class="text-surface-500 text-sm">Build your own products and bring ideas to life</p>
-      </div>
+        <h3 class="audience-card__title">Entrepreneurs</h3>
+        <p class="audience-card__text">Build your own products and bring ideas to life</p>
+      </article>
       
-      <div class="card-interactive text-center group" data-animate style="animation-delay: 300ms;">
-        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-success-50 to-green-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <span class="text-4xl">⬆️</span>
+      <article class="audience-card">
+        <div class="audience-card__icon audience-card__icon--green">
+          <span></span>
         </div>
-        <h4 class="mb-2">Skill Upgraders</h4>
-        <p class="text-surface-500 text-sm">Level up your existing skills with modern technologies</p>
-      </div>
+        <h3 class="audience-card__title">Skill Upgraders</h3>
+        <p class="audience-card__text">Level up your existing skills with modern technologies</p>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- Testimonials Section -->
-<section class="section-spacing bg-surface-50">
-  <div class="container-app">
-    <div class="section-header">
-      <span class="overline">Success Stories</span>
-      <h2>What Our <span class="text-gradient">Students Say</span></h2>
-      <p>Hear from our alumni who have transformed their careers through our training programs.</p>
-    </div>
+<section class="home-testimonials">
+  <div class="home-testimonials__container">
+    <header class="home-testimonials__header">
+      <span class="home-testimonials__badge">Success Stories</span>
+      <h2 class="home-testimonials__title">
+        What Our <span class="home-testimonials__highlight">Students Say</span>
+      </h2>
+      <p class="home-testimonials__subtitle">
+        Hear from our alumni who have transformed their careers through our training programs.
+      </p>
+    </header>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Testimonial 1 -->
-      <div class="card relative" data-animate>
-        <div class="absolute -top-4 left-6 text-5xl text-primary-200">"</div>
-        <div class="pt-4">
-          <p class="text-surface-600 mb-6 relative z-10">
-            VARS helped me find my way and discover my own talent. The practical knowledge I gained here was instrumental in landing my dream job.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold">
-              SM
-            </div>
-            <div>
-              <div class="font-semibold text-surface-900">Sachin Machale</div>
-              <div class="text-sm text-surface-500">Front-end Developer</div>
-            </div>
+    <div class="home-testimonials__grid">
+      <article class="testimonial-card">
+        <div class="testimonial-card__quote">"</div>
+        <p class="testimonial-card__text">
+          VARS helped me find my way and discover my own talent. The practical 
+          knowledge I gained here was instrumental in landing my dream job.
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar testimonial-card__avatar--blue">SM</div>
+          <div class="testimonial-card__info">
+            <span class="testimonial-card__name">Sachin Machale</span>
+            <span class="testimonial-card__role">Front-end Developer</span>
           </div>
         </div>
-      </div>
+      </article>
       
-      <!-- Testimonial 2 -->
-      <div class="card relative" data-animate style="animation-delay: 100ms;">
-        <div class="absolute -top-4 left-6 text-5xl text-secondary-200">"</div>
-        <div class="pt-4">
-          <p class="text-surface-600 mb-6 relative z-10">
-            The hands-on approach and industry-focused curriculum made all the difference. I went from zero coding knowledge to a full-stack developer.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-secondary-400 to-secondary-600 flex items-center justify-center text-white font-bold">
-              MD
-            </div>
-            <div>
-              <div class="font-semibold text-surface-900">Mukesh Damma</div>
-              <div class="text-sm text-surface-500">Full-stack Developer</div>
-            </div>
+      <article class="testimonial-card">
+        <div class="testimonial-card__quote">"</div>
+        <p class="testimonial-card__text">
+          The hands-on approach and industry-focused curriculum made all the 
+          difference. I went from zero coding knowledge to a full-stack developer.
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar testimonial-card__avatar--purple">MD</div>
+          <div class="testimonial-card__info">
+            <span class="testimonial-card__name">Mukesh Damma</span>
+            <span class="testimonial-card__role">Full-stack Developer</span>
           </div>
         </div>
-      </div>
+      </article>
       
-      <!-- Testimonial 3 -->
-      <div class="card relative" data-animate style="animation-delay: 200ms;">
-        <div class="absolute -top-4 left-6 text-5xl text-accent-200">"</div>
-        <div class="pt-4">
-          <p class="text-surface-600 mb-6 relative z-10">
-            If you're searching for the right opportunity to start your tech career, VARS is the place. Their mentorship and support are exceptional.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center text-white font-bold">
-              RN
-            </div>
-            <div>
-              <div class="font-semibold text-surface-900">Rohini Nimbane</div>
-              <div class="text-sm text-surface-500">UI/UX Developer</div>
-            </div>
+      <article class="testimonial-card">
+        <div class="testimonial-card__quote">"</div>
+        <p class="testimonial-card__text">
+          If you're searching for the right opportunity to start your tech career, 
+          VARS is the place. Their mentorship and support are exceptional.
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar testimonial-card__avatar--orange">RN</div>
+          <div class="testimonial-card__info">
+            <span class="testimonial-card__name">Rohini Nimbane</span>
+            <span class="testimonial-card__role">UI/UX Developer</span>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- Placement Partners Section -->
-<section class="section-spacing bg-white">
-  <div class="container-app">
-    <div class="section-header">
-      <span class="overline">Our Network</span>
-      <h2>Placement <span class="text-gradient">Partners</span></h2>
-      <p>Our students are working at leading companies across the globe.</p>
-    </div>
+<section class="home-partners">
+  <div class="home-partners__container">
+    <header class="home-partners__header">
+      <span class="home-partners__badge">Our Network</span>
+      <h2 class="home-partners__title">
+        Placement <span class="home-partners__highlight">Partners</span>
+      </h2>
+      <p class="home-partners__subtitle">
+        Our students are working at leading companies across the globe.
+      </p>
+    </header>
     
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-      <div *ngFor="let logo of placementLogo" 
-           class="p-6 rounded-2xl bg-surface-50 hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center justify-center group">
+    <div class="home-partners__grid">
+      <div *ngFor="let logo of placementLogo" class="partner-logo">
         <img [src]="'assets/img/slides/' + logo.companyLogo" 
              [alt]="logo.companyName"
-             [title]="logo.companyName"
-             class="max-h-12 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0">
+             [title]="logo.companyName">
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA Section -->
-<section class="section-spacing-sm bg-gradient-to-r from-primary-600 to-secondary-600">
-  <div class="container-app">
-    <div class="text-center text-white">
-      <h2 class="text-white text-3xl md:text-4xl mb-4">Ready to Start Your Journey?</h2>
-      <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+<section class="home-cta">
+  <div class="home-cta__container">
+    <div class="home-cta__content">
+      <h2 class="home-cta__title">Ready to Start Your Journey?</h2>
+      <p class="home-cta__text">
         Join our next batch and transform your career. Limited seats available!
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a routerLink="/contact" class="btn btn-lg bg-white text-primary-600 hover:bg-surface-50 shadow-xl">
+      <div class="home-cta__actions">
+        <a routerLink="/contact" class="home-cta__btn home-cta__btn--primary">
           Enroll Now
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>
         </a>
-        <a routerLink="/cources" class="btn btn-lg bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
+        <a routerLink="/cources" class="home-cta__btn home-cta__btn--secondary">
           View Courses
         </a>
       </div>

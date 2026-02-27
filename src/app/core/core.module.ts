@@ -9,15 +9,17 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    // Import standalone components
+    HeaderComponent,
+    FooterComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent
   ],
   declarations: [
-    HeaderComponent,
-    FooterComponent
+    // Header and Footer are now standalone - moved to imports
   ],
   providers: [
 

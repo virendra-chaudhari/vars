@@ -1,32 +1,46 @@
-import { Component, HostListener } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, HostListener, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+interface NavLink {
+  label: string;
+  path: string;
+  icon?: string;
+}
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css'],
-    standalone: false
+  selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-    isNavBarFixed = false;
-    isMobileMenuOpen = false;
-    
-    constructor(private activatedRoute: ActivatedRoute) {
+  isScrolled = signal(false);
+  isMobileMenuOpen = signal(false);
 
-    }
-    @HostListener("window:scroll", [])
-    onWindowScroll() {
-        window.pageYOffset < 85 ? this.isNavBarFixed = false : this.isNavBarFixed = true;
-        // Close mobile menu on scroll
-        if (this.isMobileMenuOpen) {
-            this.isMobileMenuOpen = false;
-        }
-    }
-    ngOnInit() {
+  navLinks: NavLink[] = [
+    { label: 'Home', path: '/home' },
+    { label: 'About Us', path: '/about' },
+    { label: 'Courses', path: '/cources' },
+    { label: 'Placements', path: '/placement' },
+    { label: 'Contact', path: '/contact' }
+  ];
 
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.isScrolled.set(window.scrollY > 50);
+    // Close mobile menu on scroll
+    if (this.isMobileMenuOpen()) {
+      this.isMobileMenuOpen.set(false);
     }
-    ngOnDestroy() {
+  }
 
-    }
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update(v => !v);
+  }
 
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen.set(false);
+  }
 }

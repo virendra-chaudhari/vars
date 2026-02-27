@@ -1,0 +1,1021 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// HOME PAGE STYLES
+// WCAG AA Compliant - Clean, Professional Design
+// Primary: #2563EB (blue-600), Text: #0F172A (slate-900), #334155 (slate-700)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VARIABLES (Local overrides for accessibility)
+// ─────────────────────────────────────────────────────────────────────────────
+
+$primary: #2563eb;
+$primary-hover: #1e40af;
+$primary-light: #dbeafe;
+
+$text-primary: #0f172a;     // slate-900 - headings
+$text-secondary: #334155;   // slate-700 - body
+$text-muted: #64748b;       // slate-500 - labels
+
+$surface: #ffffff;
+$surface-alt: #f8fafc;
+$border: #e2e8f0;
+
+$accent-orange: #f97316;
+$accent-green: #22c55e;
+$accent-purple: #7c3aed;
+
+// Container
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}
+
+// Section spacing (64-80px desktop, 40-56px tablet, 28-40px mobile)
+@mixin section-spacing {
+  padding: 80px 0;
+
+  @media (max-width: 1024px) {
+    padding: 56px 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: 40px 0;
+  }
+}
+
+@mixin section-spacing-sm {
+  padding: 64px 0;
+
+  @media (max-width: 1024px) {
+    padding: 48px 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HERO SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+
+  @media (max-width: 640px) {
+    padding: 48px 0;
+    min-height: auto;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #fef3c7 100%);
+    z-index: 0;
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    max-width: 720px;
+    text-align: center;
+    background: $surface;
+    padding: 48px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 640px) {
+      padding: 32px 24px;
+      border-radius: 16px;
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-bottom: 24px;
+    background: $primary-light;
+    border-radius: 9999px;
+    color: $primary-hover;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__badge-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $text-primary;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
+  }
+
+  &__highlight {
+    display: block;
+    background: linear-gradient(135deg, $primary 0%, $accent-purple 50%, $accent-orange 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: $text-secondary;
+    margin-bottom: 32px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--primary {
+      background: $primary;
+      color: white;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+
+      &:hover {
+        background: $primary-hover;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: $text-primary;
+      border: 2px solid $border;
+
+      &:hover {
+        border-color: $primary;
+        color: $primary;
+        background: rgba($primary, 0.05);
+      }
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATS SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-stats {
+  background: $surface;
+  padding: 48px 0;
+  border-bottom: 1px solid $border;
+
+  @media (max-width: 640px) {
+    padding: 32px 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+    padding: 16px;
+  }
+
+  &__value {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1;
+    margin-bottom: 8px;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    color: $text-muted;
+    font-weight: 500;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FEATURES SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-features {
+  @include section-spacing;
+  background: $surface-alt;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    background: $primary-light;
+    border-radius: 9999px;
+    color: $primary-hover;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: $primary;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.feature-card {
+  background: $surface;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid $border;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    &--primary {
+      background: $primary-light;
+
+      svg {
+        color: $primary;
+      }
+    }
+
+    &--secondary {
+      background: #f3e8ff;
+
+      svg {
+        color: $accent-purple;
+      }
+    }
+
+    &--accent {
+      background: #ffedd5;
+
+      svg {
+        color: $accent-orange;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: $text-secondary;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MISSION SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-mission {
+  @include section-spacing;
+  background: $primary;
+
+  &__container {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  &__content {
+    color: white;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    background: rgba(white, 0.15);
+    border-radius: 9999px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: #fbbf24;
+  }
+
+  &__text {
+    font-size: 17px;
+    color: rgba(white, 0.85);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    color: rgba(white, 0.9);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: #22c55e;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.mission-card {
+  background: rgba(white, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 28px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid rgba(white, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(white, 0.15);
+    transform: translateY(-4px);
+  }
+
+  &__icon {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  &__value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: rgba(white, 0.7);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AUDIENCE SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-audience {
+  @include section-spacing;
+  background: $surface;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    background: #dcfce7;
+    border-radius: 9999px;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: $primary;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+}
+
+.audience-card {
+  background: $surface-alt;
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid $border;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: $primary;
+  }
+
+  &__icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+
+    span {
+      font-size: 32px;
+    }
+
+    &--blue {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    }
+
+    &--purple {
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+    }
+
+    &--orange {
+      background: linear-gradient(135deg, #ffedd5, #fed7aa);
+    }
+
+    &--green {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    }
+  }
+
+  &:hover &__icon {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TESTIMONIALS SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-testimonials {
+  @include section-spacing;
+  background: $surface-alt;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    background: #fef3c7;
+    border-radius: 9999px;
+    color: #92400e;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: $primary;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.testimonial-card {
+  background: $surface;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid $border;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  &__quote {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-size: 48px;
+    font-family: Georgia, serif;
+    color: $primary-light;
+    line-height: 1;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin: 0 0 24px;
+    padding-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+
+    &--blue {
+      background: linear-gradient(135deg, $primary, #3b82f6);
+    }
+
+    &--purple {
+      background: linear-gradient(135deg, $accent-purple, #8b5cf6);
+    }
+
+    &--orange {
+      background: linear-gradient(135deg, $accent-orange, #fb923c);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__role {
+    font-size: 13px;
+    color: $text-muted;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PARTNERS SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-partners {
+  @include section-spacing;
+  background: $surface;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    background: $surface-alt;
+    border-radius: 9999px;
+    color: $text-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: $primary;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    align-items: center;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+}
+
+.partner-logo {
+  padding: 24px;
+  border-radius: 12px;
+  background: $surface-alt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  img {
+    max-height: 48px;
+    width: auto;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background: $surface;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+
+    img {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CTA SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-cta {
+  @include section-spacing-sm;
+  background: linear-gradient(135deg, $primary 0%, $primary-hover 100%);
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    color: rgba(white, 0.9);
+    line-height: 1.6;
+    margin-bottom: 32px;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--primary {
+      background: white;
+      color: $primary;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    &--secondary {
+      background: rgba(white, 0.15);
+      color: white;
+      backdrop-filter: blur(10px);
+
+      &:hover {
+        background: rgba(white, 0.25);
+      }
+    }
+  }
+}
