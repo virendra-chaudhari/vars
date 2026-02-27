@@ -4,27 +4,59 @@
     <div class="course-hero" [style.background]="'linear-gradient(135deg, ' + course()!.color + '15, ' + course()!.color + '05)'">
       <div class="course-hero__container">
         <a routerLink="/cources" class="course-hero__back">
-          <span class="course-hero__back-icon">←</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           Back to Courses
         </a>
         
         <div class="course-hero__content">
-          <div class="course-hero__icon" [style.background-color]="course()!.color + '20'">
-            {{ course()!.icon }}
-          </div>
-          <div class="course-hero__text">
-            <h1 class="course-hero__title">{{ course()!.name }}</h1>
-            <p class="course-hero__tagline">{{ course()!.tagline }}</p>
-            <div class="course-hero__meta">
-              <span class="course-hero__badge">
-                <span class="course-hero__badge-icon">⏱️</span>
-                {{ course()!.duration }}
+          <div class="course-hero__main">
+            <div class="course-hero__badges">
+              <span class="course-hero__tag" [style.background-color]="course()!.color + '20'" [style.color]="course()!.color">
+                Bestseller
               </span>
-              <span class="course-hero__badge">
-                <span class="course-hero__badge-icon">📊</span>
-                {{ course()!.level }}
+              <span class="course-hero__tag course-hero__tag--updated">
+                Updated {{ course()!.lastUpdated }}
               </span>
             </div>
+            
+            <h1 class="course-hero__title">{{ course()!.name }}</h1>
+            <p class="course-hero__tagline">{{ course()!.tagline }}</p>
+            
+            <div class="course-hero__rating">
+              <span class="course-hero__rating-value">{{ course()!.rating }}</span>
+              <div class="course-hero__stars">
+                @for (star of getStarArray(course()!.rating); track $index) {
+                  <svg class="course-hero__star" [class.course-hero__star--filled]="star.filled" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                }
+              </div>
+              <span class="course-hero__reviews">({{ course()!.reviewCount.toLocaleString() }} reviews)</span>
+              <span class="course-hero__students">{{ formatStudentCount(course()!.studentCount) }} students enrolled</span>
+            </div>
+            
+            <div class="course-hero__meta">
+              <span class="course-hero__meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {{ course()!.duration }}
+              </span>
+              <span class="course-hero__meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                {{ course()!.level }}
+              </span>
+              <span class="course-hero__meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                {{ getTotalVideos() }} videos
+              </span>
+              <span class="course-hero__meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                {{ course()!.language }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="course-hero__icon-wrapper" [style.background-color]="course()!.color + '15'">
+            <span class="course-hero__icon">{{ course()!.icon }}</span>
           </div>
         </div>
       </div>
@@ -60,7 +92,10 @@
 
             <!-- Curriculum -->
             <div class="content-card">
-              <h2 class="content-card__title">Course Curriculum</h2>
+              <h2 class="content-card__title">
+                Course Curriculum
+                <span class="content-card__subtitle">{{ course()!.modules.length }} modules • {{ getTotalVideos() }} videos</span>
+              </h2>
               <div class="curriculum">
                 @for (module of course()!.modules; track module.title; let i = $index) {
                   <div class="curriculum__module">
@@ -70,13 +105,16 @@
                       </div>
                       <div class="curriculum__info">
                         <h3 class="curriculum__title">{{ module.title }}</h3>
-                        <span class="curriculum__duration">{{ module.duration }}</span>
+                        <div class="curriculum__meta">
+                          <span class="curriculum__duration">{{ module.duration }}</span>
+                          <span class="curriculum__videos">{{ module.videoCount }} videos</span>
+                        </div>
                       </div>
                     </div>
                     <ul class="curriculum__topics">
                       @for (topic of module.topics; track topic) {
                         <li class="curriculum__topic">
-                          <span class="curriculum__check" [style.color]="course()!.color">✓</span>
+                          <svg class="curriculum__check" [style.color]="course()!.color" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                           {{ topic }}
                         </li>
                       }
@@ -89,11 +127,102 @@
             <!-- Projects -->
             <div class="content-card">
               <h2 class="content-card__title">Hands-on Projects</h2>
+              <p class="content-card__text">Build real-world projects to add to your portfolio:</p>
               <div class="projects-grid">
-                @for (project of course()!.projects; track project) {
+                @for (project of course()!.projects; track project; let i = $index) {
                   <div class="project-item">
-                    <span class="project-item__icon">🚀</span>
+                    <span class="project-item__number" [style.background-color]="course()!.color + '20'" [style.color]="course()!.color">{{ i + 1 }}</span>
                     <span class="project-item__name">{{ project }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Instructor -->
+            <div class="content-card">
+              <h2 class="content-card__title">Meet Your Instructor</h2>
+              <div class="instructor">
+                <div class="instructor__avatar" [style.background]="'linear-gradient(135deg, ' + course()!.color + ', #4f46e5)'">
+                  {{ course()!.instructor.avatar }}
+                </div>
+                <div class="instructor__info">
+                  <h3 class="instructor__name">{{ course()!.instructor.name }}</h3>
+                  <p class="instructor__title">{{ course()!.instructor.title }}</p>
+                  <div class="instructor__stats">
+                    <span class="instructor__stat">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      {{ course()!.instructor.rating }} Rating
+                    </span>
+                    <span class="instructor__stat">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      {{ formatStudentCount(course()!.instructor.students) }} Students
+                    </span>
+                    <span class="instructor__stat">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                      {{ course()!.instructor.courses }} Courses
+                    </span>
+                  </div>
+                  <p class="instructor__bio">{{ course()!.instructor.bio }}</p>
+                  <div class="instructor__expertise">
+                    @for (skill of course()!.instructor.expertise; track skill) {
+                      <span class="instructor__skill" [style.border-color]="course()!.color" [style.color]="course()!.color">{{ skill }}</span>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="content-card">
+              <h2 class="content-card__title">
+                Student Reviews
+                <span class="content-card__badge" [style.background-color]="course()!.color">
+                  {{ course()!.rating }} ★
+                </span>
+              </h2>
+              <div class="reviews">
+                @for (review of course()!.reviews; track review.id) {
+                  <div class="review">
+                    <div class="review__header">
+                      <div class="review__avatar" [style.background]="'linear-gradient(135deg, ' + course()!.color + ', #4f46e5)'">
+                        {{ review.avatar }}
+                      </div>
+                      <div class="review__info">
+                        <h4 class="review__name">{{ review.name }}</h4>
+                        <p class="review__role">{{ review.role }}</p>
+                      </div>
+                      <span class="review__date">{{ review.date }}</span>
+                    </div>
+                    <div class="review__rating">
+                      @for (star of getStarArray(review.rating); track $index) {
+                        <svg class="review__star" [class.review__star--filled]="star.filled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      }
+                    </div>
+                    <p class="review__comment">{{ review.comment }}</p>
+                    <div class="review__helpful">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                      {{ review.helpful }} found this helpful
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="content-card">
+              <h2 class="content-card__title">Frequently Asked Questions</h2>
+              <div class="faq">
+                @for (item of course()!.faqs; track item.question; let i = $index) {
+                  <div class="faq__item" [class.faq__item--open]="item.isOpen">
+                    <button class="faq__question" (click)="toggleFaq(i)">
+                      <span>{{ item.question }}</span>
+                      <svg class="faq__arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq__answer">
+                      <p>{{ item.answer }}</p>
+                    </div>
                   </div>
                 }
               </div>
@@ -104,12 +233,47 @@
           <div class="course-content__sidebar">
             <!-- Enrollment Card -->
             <div class="sidebar-card sidebar-card--enroll">
-              <h3 class="sidebar-card__title">Ready to Start?</h3>
-              <p class="sidebar-card__text">Join thousands of students who have transformed their careers with this course.</p>
-              <button class="sidebar-card__btn" [style.background-color]="course()!.color">
+              <div class="sidebar-card__price">
+                <span class="sidebar-card__price-current">{{ formatPrice(course()!.price) }}</span>
+                <span class="sidebar-card__price-original">{{ formatPrice(course()!.originalPrice) }}</span>
+                <span class="sidebar-card__discount" [style.background-color]="course()!.color">
+                  {{ calculateDiscount(course()!.price, course()!.originalPrice) }}% OFF
+                </span>
+              </div>
+              <p class="sidebar-card__urgency">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Offer ends in 2 days!
+              </p>
+              <button class="sidebar-card__btn" [style.background-color]="course()!.color" (click)="enrollNow()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                 Enroll Now
               </button>
-              <p class="sidebar-card__note">30-day money-back guarantee</p>
+              <div class="sidebar-card__features">
+                <div class="sidebar-card__feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  Lifetime Access
+                </div>
+                <div class="sidebar-card__feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  Certificate of Completion
+                </div>
+                <div class="sidebar-card__feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {{ getTotalVideos() }} HD Video Lessons
+                </div>
+                <div class="sidebar-card__feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {{ course()!.projects.length }} Real-world Projects
+                </div>
+                <div class="sidebar-card__feature">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  Doubt Support & Community
+                </div>
+              </div>
+              <p class="sidebar-card__guarantee">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                30-Day Money-Back Guarantee
+              </p>
             </div>
 
             <!-- Prerequisites -->
@@ -118,7 +282,7 @@
               <ul class="sidebar-card__list">
                 @for (prereq of course()!.prerequisites; track prereq) {
                   <li class="sidebar-card__list-item">
-                    <span class="sidebar-card__bullet">•</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                     {{ prereq }}
                   </li>
                 }
@@ -153,11 +317,30 @@
               <ul class="sidebar-card__careers">
                 @for (career of course()!.careerPaths; track career) {
                   <li class="sidebar-card__career">
-                    <span class="sidebar-card__career-icon">💼</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     {{ career }}
                   </li>
                 }
               </ul>
+            </div>
+
+            <!-- Share -->
+            <div class="sidebar-card sidebar-card--share">
+              <h3 class="sidebar-card__heading">Share this course</h3>
+              <div class="sidebar-card__share-buttons">
+                <button class="sidebar-card__share-btn" title="Share on WhatsApp">
+                  <span>📱</span>
+                </button>
+                <button class="sidebar-card__share-btn" title="Share on LinkedIn">
+                  <span>💼</span>
+                </button>
+                <button class="sidebar-card__share-btn" title="Share on Twitter">
+                  <span>🐦</span>
+                </button>
+                <button class="sidebar-card__share-btn" title="Copy Link">
+                  <span>🔗</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1018,4 +1018,597 @@ $accent-purple: #7c3aed;
       }
     }
   }
+
+  &__badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    background: rgba(white, 0.15);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__features {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  &__feature {
+    font-size: 14px;
+    color: rgba(white, 0.9);
+    font-weight: 500;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HERO ENHANCEMENTS - Particles and Trust Badges
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-hero__particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.home-hero__particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: $primary;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 15s infinite;
+
+  &:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 5s;
+  }
+
+  &:nth-child(3) {
+    top: 40%;
+    left: 60%;
+    animation-delay: 10s;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+.home-hero__trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.home-hero__trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: $text-secondary;
+  font-weight: 500;
+}
+
+.home-hero__trust-icon {
+  font-size: 16px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATS ENHANCEMENTS - With icons
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-stats__icon {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FEATURED COURSES SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-courses {
+  @include section-spacing;
+  background: $surface;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 9999px;
+    color: #92400e;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 28px;
+    }
+  }
+
+  &__highlight {
+    color: $primary;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__cta {
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: $primary;
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background: $primary-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.featured-course {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: $surface-alt;
+  border-radius: 16px;
+  border: 1px solid $border;
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease forwards;
+  opacity: 0;
+
+  &:hover {
+    transform: translateX(8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: $primary;
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+
+    span {
+      font-size: 32px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 6px;
+  }
+
+  &__description {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__rating, &__students, &__duration {
+    font-size: 13px;
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  &__rating {
+    color: #92400e;
+    font-weight: 600;
+  }
+
+  &__link {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $surface;
+    border-radius: 12px;
+    border: 1px solid $border;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $text-muted;
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+
+      svg {
+        color: white;
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FEATURE CARD ENHANCEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+.feature-card__stat {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 12px;
+  background: $surface-alt;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $primary;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AUDIENCE CARD ENHANCEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+.audience-card__stat {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  background: $primary-light;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $primary;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TESTIMONIAL CAROUSEL
+// ─────────────────────────────────────────────────────────────────────────────
+
+.testimonial-carousel {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__content {
+    margin-bottom: 32px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__arrow {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $surface;
+    border: 1px solid $border;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $text-secondary;
+    }
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $border;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--active {
+      background: $primary;
+      transform: scale(1.2);
+    }
+
+    &:hover:not(&--active) {
+      background: $text-muted;
+    }
+  }
+}
+
+.testimonial-featured {
+  background: $surface;
+  padding: 48px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid $border;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 640px) {
+    padding: 32px 24px;
+  }
+
+  &__quote {
+    font-size: 72px;
+    font-family: Georgia, serif;
+    color: $primary-light;
+    line-height: 1;
+    margin-bottom: -16px;
+  }
+
+  &__text {
+    font-size: 20px;
+    color: $text-secondary;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-style: italic;
+
+    @media (max-width: 640px) {
+      font-size: 17px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  &__star {
+    width: 24px;
+    height: 24px;
+    color: #e2e8f0;
+
+    &--filled {
+      color: #fbbf24;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $primary, #4f46e5);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__info {
+    text-align: left;
+  }
+
+  &__name {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__role {
+    display: block;
+    font-size: 14px;
+    color: $text-muted;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PARTNERS SECTION ENHANCEMENTS - Marquee Animation
+// ─────────────────────────────────────────────────────────────────────────────
+
+.home-partners__marquee {
+  overflow: hidden;
+  margin: 0 -24px 40px;
+  padding: 24px 0;
+  background: $surface;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+}
+
+.home-partners__marquee-content {
+  display: flex;
+  gap: 48px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-logo {
+  flex-shrink: 0;
+  padding: 16px 32px;
+  background: $surface-alt;
+  border-radius: 12px;
+  border: 1px solid $border;
+
+  &__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+}
+
+.home-partners__stats {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    gap: 32px;
+  }
+}
+
+.home-partners__stat {
+  text-align: center;
+
+  &-value {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 4px;
+
+    @media (max-width: 640px) {
+      font-size: 24px;
+    }
+  }
+
+  &-label {
+    font-size: 14px;
+    color: $text-muted;
+    font-weight: 500;
+  }
 }

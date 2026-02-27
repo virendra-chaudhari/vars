@@ -1,9 +1,9 @@
 ﻿<!-- 
-     COURSES PAGE - Clean, Professional Design
-     Matches the light theme with proper contrast
-      -->
+     COURSES PAGE - Modern Interactive Design
+     Professional course marketplace with filtering and rich data
+-->
 
-<!-- Compact Hero Section -->
+<!-- Compact Hero Section with Stats -->
 <section class="courses-hero">
   <div class="courses-hero__container">
     <span class="courses-hero__badge">
@@ -11,12 +11,35 @@
         <path d="M12 14l9-5-9-5-9 5 9 5z"/>
         <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
       </svg>
-      Premium Learning
+      Premium Learning Platform
     </span>
-    <h1 class="courses-hero__title">Our Courses</h1>
+    <h1 class="courses-hero__title">Transform Your Career with Our Courses</h1>
     <p class="courses-hero__subtitle">
-      Master modern web technologies with our comprehensive, hands-on courses designed for real-world success.
+      Industry-leading curriculum designed by experts. Join 165,000+ students already learning with us.
     </p>
+    
+    <!-- Animated Stats -->
+    <div class="courses-hero__stats">
+      <div class="courses-hero__stat">
+        <span class="courses-hero__stat-value">{{ animatedStats().students | number }}</span>
+        <span class="courses-hero__stat-label">Students Enrolled</span>
+      </div>
+      <div class="courses-hero__stat-divider"></div>
+      <div class="courses-hero__stat">
+        <span class="courses-hero__stat-value">{{ animatedStats().courses }}</span>
+        <span class="courses-hero__stat-label">Premium Courses</span>
+      </div>
+      <div class="courses-hero__stat-divider"></div>
+      <div class="courses-hero__stat">
+        <span class="courses-hero__stat-value">{{ animatedStats().instructors }}</span>
+        <span class="courses-hero__stat-label">Expert Instructors</span>
+      </div>
+      <div class="courses-hero__stat-divider"></div>
+      <div class="courses-hero__stat">
+        <span class="courses-hero__stat-value">{{ animatedStats().rating }}⭐</span>
+        <span class="courses-hero__stat-label">Avg. Rating</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -24,19 +47,65 @@
 <section class="courses-main">
   <div class="courses-main__container">
     
-    <!-- Search Bar -->
-    <div class="courses-search">
-      <div class="courses-search__wrapper">
+    <!-- Filters Section -->
+    <div class="courses-filters">
+      <!-- Search Bar -->
+      <div class="courses-search">
         <svg class="courses-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
           <path d="M21 21l-4.35-4.35"/>
         </svg>
         <input 
           type="text" 
-          placeholder="Search courses..." 
+          placeholder="Search courses, topics, or instructors..." 
           (input)="onSearch($event)"
           class="courses-search__input"
         >
+      </div>
+      
+      <!-- Category Tabs -->
+      <div class="courses-categories">
+        @for (category of categories; track category.id) {
+          <button 
+            class="courses-category"
+            [class.courses-category--active]="selectedCategory() === category.id"
+            (click)="onCategoryChange(category.id)">
+            {{ category.name }}
+            <span class="courses-category__count">{{ category.count }}</span>
+          </button>
+        }
+      </div>
+      
+      <!-- Filter Row -->
+      <div class="courses-filter-row">
+        <div class="courses-filter-group">
+          <label class="courses-filter-label">Level:</label>
+          <select 
+            class="courses-filter-select" 
+            (change)="onLevelChange($any($event.target).value)">
+            <option value="all">All Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        
+        <div class="courses-filter-group">
+          <label class="courses-filter-label">Sort by:</label>
+          <select 
+            class="courses-filter-select"
+            (change)="onSortChange($any($event.target).value)">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+        
+        <div class="courses-results-count">
+          Showing <strong>{{ filteredCourses().length }}</strong> courses
+        </div>
       </div>
     </div>
 
@@ -45,12 +114,35 @@
       @for (course of filteredCourses(); track course.id; let i = $index) {
         <article 
           class="course-card"
-          [style.animation-delay.ms]="i * 50"
+          [style.animation-delay.ms]="i * 80"
           [routerLink]="['/course', course.routeId]"
         >
-          <!-- Card Icon -->
-          <div class="course-card__icon-wrapper">
-            <span class="course-card__icon">{{ course.icon }}</span>
+          <!-- Badges -->
+          <div class="course-card__badges">
+            @if (course.isBestseller) {
+              <span class="course-card__badge course-card__badge--bestseller">🔥 Bestseller</span>
+            }
+            @if (course.isNew) {
+              <span class="course-card__badge course-card__badge--new">✨ New</span>
+            }
+            <span class="course-card__badge course-card__badge--discount">
+              {{ calculateDiscount(course.originalPrice, course.price) }}% OFF
+            </span>
+          </div>
+          
+          <!-- Card Header with Icon -->
+          <div class="course-card__header">
+            <div class="course-card__icon-wrapper">
+              <span class="course-card__icon">{{ course.icon }}</span>
+            </div>
+            <div class="course-card__level">
+              <span class="course-card__level-badge" 
+                    [class.course-card__level-badge--beginner]="course.level === 'Beginner'"
+                    [class.course-card__level-badge--intermediate]="course.level === 'Intermediate'"
+                    [class.course-card__level-badge--advanced]="course.level === 'Advanced'">
+                {{ course.level }}
+              </span>
+            </div>
           </div>
           
           <!-- Card Content -->
@@ -58,23 +150,84 @@
             <h3 class="course-card__title">{{ course.courseName }}</h3>
             <p class="course-card__description">{{ course.details }}</p>
             
-            <!-- Tags -->
-            <div class="course-card__tags">
-              @for (topic of course.syllabus.split(',').slice(0, 3); track topic) {
-                <span class="course-card__tag">{{ topic.trim() }}</span>
+            <!-- Instructor -->
+            <div class="course-card__instructor">
+              <div class="course-card__instructor-avatar">{{ course.instructor.avatar }}</div>
+              <div class="course-card__instructor-info">
+                <span class="course-card__instructor-name">{{ course.instructor.name }}</span>
+                <span class="course-card__instructor-title">{{ course.instructor.title }}</span>
+              </div>
+            </div>
+            
+            <!-- Stats Row -->
+            <div class="course-card__stats">
+              <div class="course-card__rating">
+                <span class="course-card__rating-value">{{ course.rating }}</span>
+                <span class="course-card__stars">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <svg 
+                      class="course-card__star"
+                      [class.course-card__star--filled]="star <= course.rating"
+                      [class.course-card__star--half]="star > course.rating && star - 0.5 <= course.rating"
+                      viewBox="0 0 20 20" 
+                      fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  }
+                </span>
+                <span class="course-card__reviews">({{ course.reviewCount | number }})</span>
+              </div>
+              <div class="course-card__students">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                {{ formatStudentCount(course.studentCount) }} students
+              </div>
+            </div>
+            
+            <!-- Duration & Topics -->
+            <div class="course-card__meta">
+              <span class="course-card__duration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                {{ course.duration }}
+              </span>
+              <span class="course-card__updated">Updated {{ course.lastUpdated }}</span>
+            </div>
+            
+            <!-- Highlights -->
+            <div class="course-card__highlights">
+              @for (highlight of course.highlights.slice(0, 3); track highlight) {
+                <span class="course-card__highlight">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  {{ highlight }}
+                </span>
               }
             </div>
             
-            <!-- CTA Button -->
-            <a 
-              class="course-card__btn"
-              [routerLink]="['/course', course.routeId]"
-            >
-              View Details
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </a>
+            <!-- Pricing -->
+            <div class="course-card__pricing">
+              <div class="course-card__price">
+                <span class="course-card__price-current">{{ formatPrice(course.price) }}</span>
+                <span class="course-card__price-original">{{ formatPrice(course.originalPrice) }}</span>
+              </div>
+              <a 
+                class="course-card__btn"
+                [routerLink]="['/course', course.routeId]"
+              >
+                Enroll Now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </article>
       }
@@ -83,10 +236,46 @@
     <!-- Empty State -->
     @if (filteredCourses().length === 0) {
       <div class="courses-empty">
-        <span class="courses-empty__icon"></span>
+        <div class="courses-empty__icon">🔍</div>
         <h3 class="courses-empty__title">No courses found</h3>
-        <p class="courses-empty__text">Try adjusting your search terms</p>
+        <p class="courses-empty__text">Try adjusting your search or filter criteria</p>
+        <button class="courses-empty__btn" (click)="onCategoryChange('all'); onLevelChange('all'); searchQuery.set('')">
+          Clear All Filters
+        </button>
       </div>
     }
+    
+    <!-- Trust Badges -->
+    <div class="courses-trust">
+      <div class="courses-trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span>30-Day Money Back Guarantee</span>
+      </div>
+      <div class="courses-trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Lifetime Access</span>
+      </div>
+      <div class="courses-trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Certificate of Completion</span>
+      </div>
+      <div class="courses-trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>24/7 Support</span>
+      </div>
+    </div>
   </div>
 </section>

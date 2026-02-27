@@ -552,3 +552,600 @@ $radius-lg: 16px;
     gap: 4px;
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENHANCED HERO SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.course-hero {
+  &__badges {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    &--updated {
+      background: #f1f5f9;
+      color: $text-muted;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  &__rating-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #92400e;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__star {
+    color: #e2e8f0;
+
+    &--filled {
+      color: #fbbf24;
+    }
+  }
+
+  &__reviews {
+    font-size: 14px;
+    color: $text-muted;
+  }
+
+  &__students {
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 500;
+    padding-left: 8px;
+    border-left: 1px solid $border-color;
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__icon-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__icon {
+    font-size: 64px;
+  }
+
+  &__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: $text-secondary;
+    background: $surface-white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    box-shadow: $shadow-sm;
+
+    svg {
+      color: $text-muted;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTENT CARD ENHANCEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+.content-card {
+  &__subtitle {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-muted;
+    margin-top: 4px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: $text-secondary;
+    margin-bottom: 20px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CURRICULUM ENHANCEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+.curriculum {
+  &__meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__videos {
+    font-size: 13px;
+    color: $text-muted;
+    padding-left: 12px;
+    border-left: 1px solid $border-color;
+  }
+
+  &__check {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PROJECT ITEM ENHANCEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+.project-item {
+  &__number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INSTRUCTOR SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.instructor {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 4px;
+  }
+
+  &__title {
+    font-size: 15px;
+    color: $text-secondary;
+    margin: 0 0 16px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+    @media (max-width: 640px) {
+      justify-content: center;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 500;
+
+    svg {
+      color: #fbbf24;
+    }
+  }
+
+  &__bio {
+    font-size: 15px;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  &__expertise {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    @media (max-width: 640px) {
+      justify-content: center;
+    }
+  }
+
+  &__skill {
+    padding: 6px 12px;
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// REVIEWS SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review {
+  padding: 24px;
+  background: $surface-light;
+  border-radius: $radius-md;
+  border: 1px solid $border-color;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 2px;
+  }
+
+  &__role {
+    font-size: 13px;
+    color: $text-muted;
+    margin: 0;
+  }
+
+  &__date {
+    font-size: 13px;
+    color: $text-muted;
+    flex-shrink: 0;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+
+  &__star {
+    color: #e2e8f0;
+
+    &--filled {
+      color: #fbbf24;
+    }
+  }
+
+  &__comment {
+    font-size: 15px;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin: 0 0 16px;
+  }
+
+  &__helpful {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: $text-muted;
+
+    svg {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FAQ SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__item {
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    overflow: hidden;
+    background: $surface-white;
+
+    &--open {
+      .faq__arrow {
+        transform: rotate(180deg);
+      }
+
+      .faq__answer {
+        max-height: 500px;
+        padding: 0 20px 20px;
+      }
+    }
+  }
+
+  &__question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $surface-light;
+    }
+
+    span {
+      flex: 1;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    color: $text-muted;
+    transition: transform 0.3s ease;
+  }
+
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    p {
+      font-size: 15px;
+      color: $text-secondary;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENHANCED SIDEBAR - ENROLLMENT CARD
+// ─────────────────────────────────────────────────────────────────────────────
+
+.sidebar-card {
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  &__price-current {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__price-original {
+    font-size: 18px;
+    color: $text-muted;
+    text-decoration: line-through;
+  }
+
+  &__discount {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+  }
+
+  &__urgency {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #dc2626;
+    font-weight: 500;
+    margin-bottom: 20px;
+
+    svg {
+      animation: pulse 2s infinite;
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: $text-secondary;
+
+    svg {
+      color: #22c55e;
+      flex-shrink: 0;
+    }
+  }
+
+  &__guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid $border-color;
+    font-size: 14px;
+    color: $text-muted;
+    font-weight: 500;
+
+    svg {
+      color: #22c55e;
+    }
+  }
+
+  &--share {
+    text-align: center;
+  }
+
+  &__share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  &__share-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $surface-light;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: $primary-color;
+    }
+  }
+
+  &__career {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    svg {
+      color: $text-muted;
+      flex-shrink: 0;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
