@@ -1,7 +1,28 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EmailJS Configuration - UPDATE THESE VALUES
+// ═══════════════════════════════════════════════════════════════════════════
+// 1. Go to https://www.emailjs.com/ and create a free account
+// 2. Add an Email Service (Gmail) and verify your email
+// 3. Create an Email Template with these variables:
+//    - {{from_name}} - Sender's name
+//    - {{from_email}} - Sender's email
+//    - {{phone}} - Sender's phone
+//    - {{subject}} - Email subject
+//    - {{message}} - Email message
+// 4. Replace the values below with your actual credentials
+// ═══════════════════════════════════════════════════════════════════════════
+const EMAILJS_CONFIG = {
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY',      // Get from EmailJS Dashboard > Account > API Keys
+  SERVICE_ID: 'YOUR_SERVICE_ID',      // Get from EmailJS Dashboard > Email Services
+  TEMPLATE_ID: 'YOUR_TEMPLATE_ID',    // Get from EmailJS Dashboard > Email Templates
+  TO_EMAIL: 'virenchaudhari07@gmail.com'  // Your receiving email
+};
 
 interface ContactInfo {
   icon: string;
@@ -29,11 +50,12 @@ interface FormField {
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   
   // Form state
   formSubmitted = signal(false);
   isSubmitting = signal(false);
+  submitError = signal<string | null>(null);
   
   // Form data
   formData = {
@@ -96,6 +118,11 @@ export class ContactComponent {
 
   expandedFaq = signal<number | null>(null);
 
+  ngOnInit(): void {
+    // Initialize EmailJS with your public key
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }
+
   toggleFaq(index: number): void {
     this.expandedFaq.set(this.expandedFaq() === index ? null : index);
   }
@@ -104,11 +131,30 @@ export class ContactComponent {
     window.open(url, '_blank');
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
+    // Reset error state
+    this.submitError.set(null);
     this.isSubmitting.set(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Prepare template parameters
+    const templateParams = {
+      from_name: this.formData.name,
+      from_email: this.formData.email,
+      phone: this.formData.phone || 'Not provided',
+      subject: this.formData.subject,
+      message: this.formData.message,
+      to_email: EMAILJS_CONFIG.TO_EMAIL
+    };
+
+    try {
+      // Send email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams
+      );
+
+      console.log('Email sent successfully!', response);
       this.isSubmitting.set(false);
       this.formSubmitted.set(true);
       
@@ -122,7 +168,17 @@ export class ContactComponent {
           subject: '',
           message: ''
         };
-      }, 3000);
-    }, 1500);
+      }, 5000);
+    } catch (error: any) {
+      console.error('Failed to send email:', error);
+      this.isSubmitting.set(false);
+      
+      // Check if EmailJS is not configured
+      if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+        this.submitError.set('EmailJS not configured. Please set up your EmailJS credentials.');
+      } else {
+        this.submitError.set('Failed to send message. Please try again or contact us directly.');
+      }
+    }
   }
 }

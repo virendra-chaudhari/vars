@@ -1,8 +1,10 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 interface Course {
   id: number;
+  routeId: string;
   buttonLabel: string;
   courseName: string;
   details: string;
@@ -14,20 +16,19 @@ interface Course {
 @Component({
   selector: 'app-cources',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cources.component.html',
-  styleUrls: ['./cources.component.css']
+  styleUrl: './cources.component.scss'
 })
 export class CourcesComponent {
   // Using Angular Signals for reactive state management
-  selectedCourse = signal<Course | null>(null);
-  isModalOpen = signal(false);
   searchQuery = signal('');
 
   // Course data
   courseDetails = signal<Course[]>([
     {
       id: 1,
+      routeId: 'angular',
       buttonLabel: 'View Details',
       courseName: "Angular",
       details: "Angular is a TypeScript-based open-source front-end web framework maintained by Google. It's used for building dynamic single-page applications with powerful features like dependency injection, reactive forms, and a comprehensive CLI.",
@@ -37,6 +38,7 @@ export class CourcesComponent {
     },
     {
       id: 2,
+      routeId: 'react',
       buttonLabel: 'View Details',
       courseName: "React JS",
       details: "React is a JavaScript library for building user interfaces. It's maintained by Meta and a community of developers. React uses a virtual DOM for efficient updates and a component-based architecture.",
@@ -46,6 +48,7 @@ export class CourcesComponent {
     },
     {
       id: 3,
+      routeId: 'node',
       buttonLabel: 'View Details',
       courseName: "Node JS",
       details: "Node.js is a JavaScript runtime built on Chrome's V8 engine. It enables server-side JavaScript execution and is perfect for building scalable network applications with its non-blocking I/O model.",
@@ -55,6 +58,7 @@ export class CourcesComponent {
     },
     {
       id: 4,
+      routeId: 'javascript',
       buttonLabel: 'View Details',
       courseName: "JavaScript",
       details: "JavaScript is a versatile programming language that powers the web. It's essential for front-end development and increasingly popular for back-end development with Node.js.",
@@ -64,6 +68,7 @@ export class CourcesComponent {
     },
     {
       id: 5,
+      routeId: 'typescript',
       buttonLabel: 'View Details',
       courseName: "TypeScript",
       details: "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It adds optional static typing and class-based object-oriented programming to the language.",
@@ -73,6 +78,7 @@ export class CourcesComponent {
     },
     {
       id: 6,
+      routeId: 'tailwind',
       buttonLabel: 'View Details',
       courseName: "Tailwind CSS",
       details: "Tailwind CSS is a utility-first CSS framework that enables rapid UI development. It provides low-level utility classes that let you build custom designs without leaving your HTML.",
@@ -92,28 +98,8 @@ export class CourcesComponent {
     );
   });
 
-  openModal(course: Course): void {
-    this.selectedCourse.set(course);
-    this.isModalOpen.set(true);
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = 'hidden';
-  }
-
-  closeModal(): void {
-    this.isModalOpen.set(false);
-    this.selectedCourse.set(null);
-    document.body.style.overflow = '';
-  }
-
   onSearch(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchQuery.set(target.value);
-  }
-
-  // Handle escape key to close modal
-  onKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Escape' && this.isModalOpen()) {
-      this.closeModal();
-    }
   }
 }

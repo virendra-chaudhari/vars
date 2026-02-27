@@ -1,0 +1,554 @@
+// Course Details Component Styles
+// BEM naming convention, consistent with site theme
+
+// Variables
+$text-primary: #0f172a;
+$text-secondary: #334155;
+$text-muted: #64748b;
+$surface-white: #ffffff;
+$surface-light: #f8fafc;
+$border-color: #e2e8f0;
+$primary-color: #2563eb;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$radius-md: 12px;
+$radius-lg: 16px;
+
+.course-details {
+  min-height: 100vh;
+  background: $surface-light;
+}
+
+// Hero Section
+.course-hero {
+  padding: 32px 0 48px;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: 0.938rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  
+  &__back-icon {
+    font-size: 1.125rem;
+  }
+  
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  
+  &__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  &__text {
+    flex: 1;
+  }
+  
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+  
+  &__tagline {
+    font-size: 1.125rem;
+    color: $text-secondary;
+    margin: 0 0 16px;
+  }
+  
+  &__meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $surface-white;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $text-secondary;
+    box-shadow: $shadow-sm;
+  }
+  
+  &__badge-icon {
+    font-size: 1rem;
+  }
+}
+
+// Main Content
+.course-content {
+  padding: 0 0 64px;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 24px;
+  }
+}
+
+// Content Cards
+.content-card {
+  background: $surface-white;
+  border-radius: $radius-lg;
+  padding: 32px;
+  box-shadow: $shadow-sm;
+  
+  &__title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 20px;
+  }
+  
+  &__description {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+// Features Grid
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: $surface-light;
+  border-radius: $radius-md;
+  
+  &__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 4px;
+  }
+  
+  &__description {
+    font-size: 0.875rem;
+    color: $text-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// Curriculum
+.curriculum {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  &__module {
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: $surface-light;
+  }
+  
+  &__number {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  &__info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+  }
+  
+  &__duration {
+    font-size: 0.813rem;
+    color: $text-muted;
+    background: $surface-white;
+    padding: 4px 10px;
+    border-radius: 16px;
+  }
+  
+  &__topics {
+    list-style: none;
+    margin: 0;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background: $surface-white;
+  }
+  
+  &__topic {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: $text-secondary;
+  }
+  
+  &__check {
+    font-weight: 600;
+  }
+}
+
+// Projects Grid
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: $surface-light;
+  border-radius: $radius-md;
+  
+  &__icon {
+    font-size: 1.25rem;
+  }
+  
+  &__name {
+    font-size: 0.938rem;
+    font-weight: 500;
+    color: $text-primary;
+  }
+}
+
+// Sidebar Cards
+.sidebar-card {
+  background: $surface-white;
+  border-radius: $radius-lg;
+  padding: 24px;
+  box-shadow: $shadow-sm;
+  
+  &--enroll {
+    text-align: center;
+    background: linear-gradient(135deg, $surface-white, $surface-light);
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 12px;
+  }
+  
+  &__text {
+    font-size: 0.938rem;
+    color: $text-secondary;
+    margin: 0 0 20px;
+    line-height: 1.6;
+  }
+  
+  &__btn {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  &__note {
+    font-size: 0.813rem;
+    color: $text-muted;
+    margin: 12px 0 0;
+  }
+  
+  &__heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $border-color;
+  }
+  
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  &__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+  
+  &__bullet {
+    color: $primary-color;
+    font-weight: 700;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  &__tag {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  &__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  &__tool {
+    display: inline-block;
+    padding: 6px 12px;
+    background: $surface-light;
+    border-radius: 6px;
+    font-size: 0.813rem;
+    color: $text-secondary;
+  }
+  
+  &__careers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  &__career {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: $text-secondary;
+  }
+  
+  &__career-icon {
+    font-size: 1rem;
+  }
+}
+
+// Loading State
+.course-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $border-color;
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  &__text {
+    font-size: 1rem;
+    color: $text-muted;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .course-content__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-content__sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .sidebar-card--enroll {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-hero {
+    padding: 24px 0 32px;
+    
+    &__content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    &__title {
+      font-size: 1.75rem;
+    }
+    
+    &__meta {
+      justify-content: center;
+    }
+  }
+  
+  .content-card {
+    padding: 24px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .curriculum__topics {
+    grid-template-columns: 1fr;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-content__sidebar {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-card--enroll {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-hero__container,
+  .course-content__container {
+    padding: 0 16px;
+  }
+  
+  .course-hero__icon {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+  }
+  
+  .course-hero__title {
+    font-size: 1.5rem;
+  }
+  
+  .curriculum__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

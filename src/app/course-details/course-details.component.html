@@ -1,0 +1,172 @@
+<section class="course-details">
+  @if (course()) {
+    <!-- Hero Section -->
+    <div class="course-hero" [style.background]="'linear-gradient(135deg, ' + course()!.color + '15, ' + course()!.color + '05)'">
+      <div class="course-hero__container">
+        <a routerLink="/cources" class="course-hero__back">
+          <span class="course-hero__back-icon">←</span>
+          Back to Courses
+        </a>
+        
+        <div class="course-hero__content">
+          <div class="course-hero__icon" [style.background-color]="course()!.color + '20'">
+            {{ course()!.icon }}
+          </div>
+          <div class="course-hero__text">
+            <h1 class="course-hero__title">{{ course()!.name }}</h1>
+            <p class="course-hero__tagline">{{ course()!.tagline }}</p>
+            <div class="course-hero__meta">
+              <span class="course-hero__badge">
+                <span class="course-hero__badge-icon">⏱️</span>
+                {{ course()!.duration }}
+              </span>
+              <span class="course-hero__badge">
+                <span class="course-hero__badge-icon">📊</span>
+                {{ course()!.level }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="course-content">
+      <div class="course-content__container">
+        <div class="course-content__grid">
+          <!-- Left Column -->
+          <div class="course-content__main">
+            <!-- Overview -->
+            <div class="content-card">
+              <h2 class="content-card__title">Course Overview</h2>
+              <p class="content-card__description">{{ course()!.longDescription }}</p>
+            </div>
+
+            <!-- Features -->
+            <div class="content-card">
+              <h2 class="content-card__title">What You'll Learn</h2>
+              <div class="features-grid">
+                @for (feature of course()!.features; track feature.title) {
+                  <div class="feature-item">
+                    <span class="feature-item__icon">{{ feature.icon }}</span>
+                    <div class="feature-item__content">
+                      <h3 class="feature-item__title">{{ feature.title }}</h3>
+                      <p class="feature-item__description">{{ feature.description }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Curriculum -->
+            <div class="content-card">
+              <h2 class="content-card__title">Course Curriculum</h2>
+              <div class="curriculum">
+                @for (module of course()!.modules; track module.title; let i = $index) {
+                  <div class="curriculum__module">
+                    <div class="curriculum__header">
+                      <div class="curriculum__number" [style.background-color]="course()!.color">
+                        {{ i + 1 }}
+                      </div>
+                      <div class="curriculum__info">
+                        <h3 class="curriculum__title">{{ module.title }}</h3>
+                        <span class="curriculum__duration">{{ module.duration }}</span>
+                      </div>
+                    </div>
+                    <ul class="curriculum__topics">
+                      @for (topic of module.topics; track topic) {
+                        <li class="curriculum__topic">
+                          <span class="curriculum__check" [style.color]="course()!.color">✓</span>
+                          {{ topic }}
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="content-card">
+              <h2 class="content-card__title">Hands-on Projects</h2>
+              <div class="projects-grid">
+                @for (project of course()!.projects; track project) {
+                  <div class="project-item">
+                    <span class="project-item__icon">🚀</span>
+                    <span class="project-item__name">{{ project }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Sidebar) -->
+          <div class="course-content__sidebar">
+            <!-- Enrollment Card -->
+            <div class="sidebar-card sidebar-card--enroll">
+              <h3 class="sidebar-card__title">Ready to Start?</h3>
+              <p class="sidebar-card__text">Join thousands of students who have transformed their careers with this course.</p>
+              <button class="sidebar-card__btn" [style.background-color]="course()!.color">
+                Enroll Now
+              </button>
+              <p class="sidebar-card__note">30-day money-back guarantee</p>
+            </div>
+
+            <!-- Prerequisites -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-card__heading">Prerequisites</h3>
+              <ul class="sidebar-card__list">
+                @for (prereq of course()!.prerequisites; track prereq) {
+                  <li class="sidebar-card__list-item">
+                    <span class="sidebar-card__bullet">•</span>
+                    {{ prereq }}
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Skills -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-card__heading">Skills You'll Gain</h3>
+              <div class="sidebar-card__tags">
+                @for (skill of course()!.skills; track skill) {
+                  <span class="sidebar-card__tag" [style.border-color]="course()!.color" [style.color]="course()!.color">
+                    {{ skill }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-card__heading">Tools & Technologies</h3>
+              <div class="sidebar-card__tools">
+                @for (tool of course()!.tools; track tool) {
+                  <span class="sidebar-card__tool">{{ tool }}</span>
+                }
+              </div>
+            </div>
+
+            <!-- Career Paths -->
+            <div class="sidebar-card">
+              <h3 class="sidebar-card__heading">Career Opportunities</h3>
+              <ul class="sidebar-card__careers">
+                @for (career of course()!.careerPaths; track career) {
+                  <li class="sidebar-card__career">
+                    <span class="sidebar-card__career-icon">💼</span>
+                    {{ career }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="course-loading">
+      <div class="course-loading__spinner"></div>
+      <p class="course-loading__text">Loading course details...</p>
+    </div>
+  }
+</section>
